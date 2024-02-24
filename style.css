@@ -1,0 +1,238 @@
+/* Импорт шрифта Montserrat из Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Сброс стилей для всех элементов */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; /* Задание шрифта */
+}
+
+/* Стили для основного контейнера страницы */
+body{
+    background-color: #5A398A; /* Фоновый цвет */
+    background: linear-gradient(to right, #5c6bc0, #5A398A); /* Градиентный фон */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Стили для контейнера формы */
+.container{
+    background-color: #fff; /* Цвет фона контейнера */
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35); /* Тень */
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+/* Стили для параграфов в контейнере */
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
+}
+
+/* Стили для текста внутри контейнера */
+.container span{
+    font-size: 12px;
+}
+
+/* Стили для ссылок в контейнере */
+.container a{
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
+
+/* Стили для кнопок в контейнере */
+.container button{
+    background-color: #FCA62D; /* Цвет фона кнопок */
+    color: #fff; /* Цвет текста на кнопках */
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Стили для скрытых кнопок */
+.container button.hidden{
+    background-color: transparent;
+    border-color: #fff;
+}
+
+/* Стили для формы в контейнере */
+.container form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+
+/* Стили для ввода в контейнере */
+.container input{
+    background-color: #eee; /* Цвет фона инпутов */
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+/* Стили для контейнера формы */
+.form-container{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+/* Стили для блока входа */
+.sign-in{
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+/* Активация блока входа */
+.container.active .sign-in{
+    transform: translateX(100%);
+}
+
+/* Стили для блока регистрации */
+.sign-up{
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* Активация блока регистрации */
+.container.active .sign-up{
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+/* Анимация перехода между блоками */
+@keyframes move{
+    0%, 49.99%{
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100%{
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+/* Стили для блока иконок социальных сетей */
+.social-icons{
+    margin: 20px 0;
+}
+
+/* Стили для иконок социальных сетей */
+.social-icons a{
+    border: 1px solid #ccc;
+    border-radius: 20%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+}
+
+/* Стили для переключателя */
+.toggle-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+}
+
+/* Активация переключателя */
+.container.active .toggle-container{
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+/* Стили для переключателя */
+.toggle{
+    background-color: #FCA62D; /* Цвет фона */
+    height: 100%;
+    background: linear-gradient(to right, #FCA62D, #D33220); /* Градиентный фон */
+    color: #fff; /* Цвет текста */
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+/* Активация переключателя */
+.container.active .toggle{
+    transform: translateX(50%);
+}
+
+/* Стили для панели переключателя */
+.toggle-panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+/* Стили для левой панели переключателя */
+.toggle-left{
+    transform: translateX(-200%);
+}
+
+/* Активация левой панели переключателя */
+.container.active .toggle-left{
+    transform: translateX(0);
+}
+
+/* Стили для правой панели переключателя */
+.toggle-right{
+    right: 0;
+    transform: translateX(0);
+}
+
+/* Активация правой панели переключателя */
+.container.active .toggle-right{
+    transform: translateX(200%);
+}
